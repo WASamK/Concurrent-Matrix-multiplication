@@ -2,7 +2,7 @@
  * Sequential program to perform matrix-matrix multiplication
  *
  * To run this program:
- * 	(compile): g++ -std=c++11 parallel.cpp -o parallel
+ * 	(compile): g++ -std=c++11 -fopenmp parallel.cpp -o parallel
  * 	(run): ./parallel <matrix_size>
  *
  * 
