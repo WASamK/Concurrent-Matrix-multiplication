@@ -73,10 +73,12 @@ long multiply(double **matA, double **matB, int size){
   for(int row = 0; row < size; row++){
     for(int col = 0; col < size; col++){
       resMat[row][col] = 0.0;
+	double temp = 0;
       for (int cur = 0; cur < size; cur++) {
-        resMat[row][col] += matA[row][cur] * trans_matB[col][cur];
+        temp+= matA[row][cur] * trans_matB[col][cur];
         //cout<<matA[row][cur]<<"*"<<trans_matB[col][cur]<<" ";
       }
+	resMat[row][col] = temp;
       //cout<<" = "<<resMat[row][col];
       //cout<<endl;
     }
