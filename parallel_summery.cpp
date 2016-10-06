@@ -119,7 +119,7 @@ int main(int argc, const char* argv[]) {
     long* runningTimes = new long[noOfInitialSamples]; 
     double mean = 0, sd =0;
     cout<<"\n====================================================="<<endl;
-    cout<<x<<"*"<<x<<" matrix multiplication (serial)"<<endl;
+    cout<<x<<"*"<<x<<" matrix multiplication (parallel)"<<endl;
     cout<<"====================================================="<<endl;
     cout<<"Performing 5 operetions to find the minimum number of required samples"<<endl;
     for(int i=0;i<noOfInitialSamples;i++){
