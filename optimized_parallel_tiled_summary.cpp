@@ -30,14 +30,16 @@ double** initMat(int size){
 }
 
 double** getTranspose(double** matrix, int size){
-  double** trans_mat = initMat(size);
+  //double** trans_mat = initMat(size);
 
   #pragma omp parallel for
   for (int row = 0; row < size; row++) {
     for (int col = 0; col < size; col++) {
-      trans_mat[row][col] = matrix[col][row];
+      std::swap(matrix[row][col], matrix[col][row]);
     }
   }
+  
+  
 
 /*Display the transpose
   for (int row = 0; row < size; row++) {
@@ -48,7 +50,7 @@ double** getTranspose(double** matrix, int size){
   }
   cout<<endl;  */
 
-  return trans_mat;
+  return matrix;
 }
 
 void populateMat(double** matrix, int size){
