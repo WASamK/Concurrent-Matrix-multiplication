@@ -2,7 +2,7 @@
  * Sequential program to perform matrix-matrix multiplication
  *
  * To run this program:
- * 	(compile): g++ -std=c++11 -fopenmp optimized_parallel_summery.cpp -o optimized_parallel_summery
+ * 	(compile): g++ -std=c++11 -fopenmp optimized_parallel_summary.cpp -o optimized_parallel_summary
  * 	(run): ./optimized_parallel <matrix_size>
  *
  * 
@@ -194,7 +194,7 @@ int main(int argc, const char* argv[]) {
     
    }
    
-   cout<<"\n\n************ Summery ************"<<endl;
+   cout<<"\n\n************ Summary ************"<<endl;
    cout<<"matrix size\t\tsample size\t\tmean\t\tStandard Deviation"<<endl;
    for(int i=0;i<10;i++){
    cout<<(i+1)*100<<"\t\t\t"<<noOfSamples[i]<<"\t\t\t"<<sampleMean[i]<<"\t\t\t"<<sampleStandardDeviation[i]<<endl;
