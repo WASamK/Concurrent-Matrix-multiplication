@@ -26,26 +26,11 @@ double** initMat(int size){
 }
 
 double** getTranspose(double** matrix, int size){
-  //double** trans_mat = initMat(size);
-
-  #pragma omp parallel for
   for (int row = 0; row < size; row++) {
-    for (int col = 0; col < size; col++) {
+    for (int col = row+1; col < size; col++) {
       std::swap(matrix[row][col], matrix[col][row]);
     }
   }
-  
-  
-
-/*Display the transpose
-  for (int row = 0; row < size; row++) {
-    for (int col = 0; col < size; col++) {
-      cout<<trans_mat[row][col]<<" ";
-    }
-    cout<<endl;
-  }
-  cout<<endl;  */
-
   return matrix;
 }
 
