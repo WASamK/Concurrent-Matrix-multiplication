@@ -108,6 +108,8 @@ double getSD(double* runningTimes, int size, double mean){
 int main(int argc, const char* argv[]) {
 
 
+
+
   int noOfInitialSamples = 10;      //Initially use 10 samples to get the sample deviation to calculate the sample sie required for the given accuracy
   int* noOfSamples = new int[10];  //Since we have to get performance for 10 matrix sizes initialize an array to store the number of samples taken for each run
   double* sampleMean = new double[10];    //initialize an array to store themean run time for each run
@@ -120,7 +122,7 @@ int main(int argc, const char* argv[]) {
     double mean = 0, sd =0;                                 //Variables to store the mean and the standard deviation for a sample
 
     cout<<"\n====================================================="<<endl;
-    cout<<x<<"*"<<x<<" matrix multiplication (Parallel)"<<endl;
+    cout<<x<<"*"<<x<<" matrix multiplication (Sequential)"<<endl;
     cout<<"====================================================="<<endl;
     cout<<"Performing "<<noOfInitialSamples<<" operetions to find the minimum number of required samples"<<endl;
 
@@ -151,11 +153,9 @@ int main(int argc, const char* argv[]) {
     	for(int i=0;i<noOfRequiredSamples;i++)     //Carry out multiplication for required number of times
         runningTimes[i]=matMultiply(size);
     
-   	mean = getMean(runningTimes,noOfRequiredSamples);  //Get the new mean run time
+   	  mean = getMean(runningTimes,noOfRequiredSamples);  //Get the new mean run time
     	cout<<"\nmean = "<<mean<<endl;
         
-    	sd = getSD(runningTimes,noOfRequiredSamples,mean);
-    	cout<<"sample SD = "<<sd<<endl;
     	noOfSamples[x/100 -1] = noOfRequiredSamples;
     }
 
@@ -165,11 +165,10 @@ int main(int argc, const char* argv[]) {
    }
    
    cout<<"\n\n************ Summary ************"<<endl;    //Display the results
-   cout<<"matrix size\t\tsample size\t\tmean\t\tStandard Deviation"<<endl;
+   cout<<"Matrix size\t\tStandard Deviation\t\tSample size\t\tMean"<<endl;
    for(int i=0;i<10;i++){
-   cout<<(i+1)*100<<"\t\t\t"<<noOfSamples[i]<<"\t\t\t"<<sampleMean[i]<<"\t\t\t"<<sampleStandardDeviation[i]<<endl;
+   cout<<(i+1)*100<<"\t\t\t"<<"\t\t\t"<<sampleStandardDeviation[i]<<noOfSamples[i]<<"\t\t\t"<<sampleMean[i]<<endl;
    }
-   
     
   
   return 0;
