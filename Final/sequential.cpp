@@ -105,7 +105,6 @@ double getSD(double* runningTimes, int size, double mean){
 
 int main(int argc, const char* argv[]) {
 
-
   int noOfInitialSamples = 10;      //Initially use 10 samples to get the sample deviation to calculate the sample sie required for the given accuracy
   int* noOfSamples = new int[10];  //Since we have to get performance for 10 matrix sizes initialize an array to store the number of samples taken for each run
   double* sampleMean = new double[10];    //initialize an array to store themean run time for each run
@@ -165,8 +164,6 @@ int main(int argc, const char* argv[]) {
    for(int i=0;i<10;i++){
    cout<<(i+1)*100<<"\t\t\t"<<"\t\t\t"<<sampleStandardDeviation[i]<<noOfSamples[i]<<"\t\t\t"<<sampleMean[i]<<endl;
    }
-   
-    
-  
+     
   return 0;
 }
