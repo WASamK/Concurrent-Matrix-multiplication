@@ -57,7 +57,7 @@ void populateMat(double** matrix, int size){
   //cout<<endl;
 }
 
-long mat_multiply_avx(double **matA, double **matB, int size){
+double mat_multiply_avx(double **matA, double **matB, int size){
   double** matC = initMat(size);
 
   high_resolution_clock::time_point start = high_resolution_clock::now();//Start clock
@@ -80,8 +80,8 @@ long mat_multiply_avx(double **matA, double **matB, int size){
 
   high_resolution_clock::time_point end = high_resolution_clock::now(); //End clock
 
-  long duration = duration_cast<milliseconds>( end - start ).count();   //Get duration in milliseconds
-  //cout<<duration<<endl;
+  double duration = (double)duration_cast<nanoseconds>( end - start ).count()/1000000;   //Get duration in milliseconds
+  //cout<<duration<<"ms"<<endl;
 
   delete matA;
   delete matB;
@@ -91,7 +91,7 @@ long mat_multiply_avx(double **matA, double **matB, int size){
 
 }
 
-long matMultiply(int size){
+double matMultiply(int size){
   double** matA = initMat(size);
   double** matB = initMat(size);
   populateMat(matA , size);
@@ -101,19 +101,18 @@ long matMultiply(int size){
 
 
 
-double getMean(long* runningTimes, int size){
-  long sum = 0;
+double getMean(double* runningTimes, int size){
+  double sum = 0;
   double mean = 0;
   for(int i=0;i<size;i++){
     sum += runningTimes[i];
   }
-  
-  mean = sum;   
-  mean = mean / size;
+   
+  mean = sum / size;
   return mean;
 }
 
-double getSD(long* runningTimes, int size, double mean){
+double getSD(double* runningTimes, int size, double mean){
   double variance = 0, sd =0;
   double* temp =  new double[size]; 
   for (int i = 0; i < size; i++) {
@@ -129,7 +128,7 @@ double getSD(long* runningTimes, int size, double mean){
 int main(int argc, const char* argv[]) {
 
 
-  int noOfInitialSamples = 5;
+  int noOfInitialSamples = 10;
   int* noOfSamples = new int[10];
   double* sampleMean = new double[10];  
   double* sampleStandardDeviation = new double[10];
@@ -137,15 +136,15 @@ int main(int argc, const char* argv[]) {
   for(int x=100;x<=1000;x+=100)
   {
     int size = x;
-    long* runningTimes = new long[noOfInitialSamples]; 
+    double* runningTimes = new double[noOfInitialSamples]; 
     double mean = 0, sd =0;
     cout<<"\n====================================================="<<endl;
-    cout<<x<<"*"<<x<<" matrix multiplication (optimized parallel tiled)"<<endl;
+    cout<<x<<"*"<<x<<" matrix multiplication (optimized parallel AVX)"<<endl;
     cout<<"====================================================="<<endl;
-    cout<<"Performing 5 operetions to find the minimum number of required samples"<<endl;
+    cout<<"Performing "<<noOfInitialSamples<<" operetions to find the minimum number of required samples"<<endl;
     for(int i=0;i<noOfInitialSamples;i++){
       runningTimes[i]=matMultiply(size);
-      cout<<runningTimes[i]<<", ";
+     // cout<<runningTimes[i]<<", ";
     }
     
     mean = getMean(runningTimes,noOfInitialSamples);
@@ -167,11 +166,11 @@ int main(int argc, const char* argv[]) {
     sampleStandardDeviation[x/100 -1] = sd;
     }
     else{
-    runningTimes = new long[noOfRequiredSamples]; 
+    runningTimes = new double[noOfRequiredSamples]; 
     cout<<"Performing "<<noOfRequiredSamples<<" operetions to find the mean and Standard Deviation"<<endl;
     for(int i=0;i<noOfRequiredSamples;i++){
       runningTimes[i]=matMultiply(size);
-      cout<<runningTimes[i]<<", ";
+      //cout<<runningTimes[i]<<", ";
     }
     
     mean = getMean(runningTimes,noOfRequiredSamples);

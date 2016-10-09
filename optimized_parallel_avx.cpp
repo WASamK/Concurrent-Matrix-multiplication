@@ -89,8 +89,8 @@ long mat_multiply_avx(double **matA, double **matB, int size){
   high_resolution_clock::time_point end = high_resolution_clock::now(); //End clock
 
 
-  long duration = duration_cast<milliseconds>( end - start ).count();   //Get duration in milliseconds
-  cout<<duration<<endl;
+  long duration = duration_cast<nanoseconds>( end - start ).count();   //Get duration in milliseconds
+  cout<<(double)duration/1000000<<"ms"<<endl;
   //cout<<"matC"<<endl;
   // display(matC,size);
 
