@@ -13,17 +13,11 @@
 #include <random>
 #include <chrono>
 #include <omp.h>
-#include <avxintrin.h>
 
 
 using namespace std::chrono;
 using namespace std;
 
-#define S 50
-
-#pragma intrinsic ( _mm_hadd_pd )
-
-int s = S;
 
 /*A method to initialize a matrix)*/
 double** initMat(int size){
@@ -142,7 +136,7 @@ int main(int argc, const char* argv[]) {
     double mean = 0, sd =0;                                 //Variables to store the mean and the standard deviation for a sample
 
     cout<<"\n====================================================="<<endl;
-    cout<<x<<"*"<<x<<" matrix multiplication (optimized parallel AVX)"<<endl;
+    cout<<x<<"*"<<x<<" matrix multiplication (Optimized parallel AVX)"<<endl;
     cout<<"====================================================="<<endl;
     cout<<"Performing "<<noOfInitialSamples<<" operetions to find the minimum number of required samples"<<endl;
 

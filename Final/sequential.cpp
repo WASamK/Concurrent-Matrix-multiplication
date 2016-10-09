@@ -2,7 +2,7 @@
  * Sequential program to perform matrix-matrix multiplication
  *
  * To run this program:
- * 	(compile): g++ -std=c++11 sequential_final.cpp -o sequential_final
+ * 	(compile): g++ -std=c++11 sequential.cpp -o sequential
  * 	(run): ./sequential_final
  *
  * 
@@ -118,7 +118,7 @@ int main(int argc, const char* argv[]) {
     double mean = 0, sd =0;                                 //Variables to store the mean and the standard deviation for a sample
 
     cout<<"\n====================================================="<<endl;
-    cout<<x<<"*"<<x<<" matrix multiplication (optimized parallel AVX)"<<endl;
+    cout<<x<<"*"<<x<<" matrix multiplication (Sequential)"<<endl;
     cout<<"====================================================="<<endl;
     cout<<"Performing "<<noOfInitialSamples<<" operetions to find the minimum number of required samples"<<endl;
 

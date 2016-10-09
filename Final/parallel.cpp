@@ -120,7 +120,7 @@ int main(int argc, const char* argv[]) {
     double mean = 0, sd =0;                                 //Variables to store the mean and the standard deviation for a sample
 
     cout<<"\n====================================================="<<endl;
-    cout<<x<<"*"<<x<<" matrix multiplication (optimized parallel AVX)"<<endl;
+    cout<<x<<"*"<<x<<" matrix multiplication (Parallel)"<<endl;
     cout<<"====================================================="<<endl;
     cout<<"Performing "<<noOfInitialSamples<<" operetions to find the minimum number of required samples"<<endl;
 
