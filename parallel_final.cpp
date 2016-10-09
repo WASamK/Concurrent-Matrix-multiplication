@@ -1,5 +1,5 @@
 /**
- * SParallel program to perform matrix-matrix multiplication
+ * Parallel program to perform matrix-matrix multiplication
  *
  * To run this program:
  * 	(compile): g++ -std=c++11 -fopenmp parallel_final.cpp -o parallel_final
